@@ -28,7 +28,7 @@ callback: function without paraleters, called when the script is loaded.
 
 This function return a jQuery.Deferred() object.
 
-###Exemple 1: Exemple with Diferred (recommended)
+###Example 1: Example with Diferred (recommended)
 ```
 <!doctype>
 <html>
@@ -51,7 +51,7 @@ This function return a jQuery.Deferred() object.
 </html> 
 ```
 
-###Exemple 2: Exemple with callback
+###Example 2: Example with callback
 ```
 <!doctype>
 <html>
@@ -74,7 +74,7 @@ This function return a jQuery.Deferred() object.
 </html>
 ```
 
-###Exemple 3: Exemple multiple script loading
+###Example 3: Example of multiple script loading
 ```
 <!doctype>
 <html>
