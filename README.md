@@ -28,13 +28,13 @@ callback: function without paraleters, called when the script is loaded.
 
 This function return a jQuery.Deferred() object.
 
-###Example 1: Example with Diferred (recommended)
+###Example 1: Example with Deferred (recommended)
 ```
 <!doctype>
 <html>
 	<head>
 		<meta charset="utf8"></meta>
-		<title>Exemple of jQuery.loadScript with differed</title>
+		<title>Exemple of jQuery.loadScript with deferred</title>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="../jquery.loadscript.js"></script>
 		<script>
