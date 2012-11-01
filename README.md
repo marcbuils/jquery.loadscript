@@ -1,4 +1,4 @@
-#jQuery.pluginautoload
+#jQuery.loadscript
 ##Load debuggable Javascript scripts
 Load a JavaScript file from the server using a GET HTTP request, then execute it. 
 This function looklike jQuery.getScript() but it use LazyLoad system. So you can debug the loaded file with a Javascript debugger. 
