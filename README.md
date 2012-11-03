@@ -30,10 +30,10 @@ This function return a jQuery.Deferred() object.
 
 ###Example 1: Example with Deferred (recommended)
 ```
-<!doctype>
+<!doctype html>
 <html>
 	<head>
-		<meta charset="utf8"></meta>
+		<meta charset="utf8" />
 		<title>Exemple of jQuery.loadScript with deferred</title>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="../jquery.loadscript.js"></script>
@@ -53,10 +53,10 @@ This function return a jQuery.Deferred() object.
 
 ###Example 2: Example with callback
 ```
-<!doctype>
+<!doctype html>
 <html>
 	<head>
-		<meta charset="utf8"></meta>
+		<meta charset="utf8" />
 		<title>Exemple of loadScript with callback</title>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="../jquery.loadscript.js"></script>
@@ -76,10 +76,10 @@ This function return a jQuery.Deferred() object.
 
 ###Example 3: Example of multiple script loading
 ```
-<!doctype>
+<!doctype html>
 <html>
 	<head>
-		<meta charset="utf8"></meta>
+		<meta charset="utf8" />
 		<title>Exemple of multiple script loading</title>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="../jquery.loadscript.js"></script>
