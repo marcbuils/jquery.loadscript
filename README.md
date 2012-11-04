@@ -4,6 +4,10 @@ Load a JavaScript file from the server using a GET HTTP request, then execute it
 This function looklike jQuery.getScript() but it use LazyLoad system. So you can debug the loaded file with a Javascript debugger. 
 With Firebug for exemple...
 
+
+[Une documentation en français est disponibles ici: http://marcbuils.developpez.com/cours/javascript/chargez-en-ajax-des-scripts-deboguables/]
+
+
 ##Author
 Marc Buils (marc.buils@marcbuils.fr)
 
