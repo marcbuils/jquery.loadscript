@@ -5,7 +5,7 @@ This function looklike jQuery.getScript() but it use LazyLoad system. So you can
 With Firebug for exemple...
 
 
-[Une documentation en français est disponibles ici: http://marcbuils.developpez.com/cours/javascript/chargez-en-ajax-des-scripts-deboguables/]
+[Une documentation en francais est disponibles ici: http://marcbuils.developpez.com/cours/javascript/chargez-en-ajax-des-scripts-deboguables/]
 
 
 ##Author
