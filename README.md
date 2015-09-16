@@ -31,6 +31,7 @@ $.loadScript( url [, prperties] ).done( callback() );
 
 - url: URL of the script to Load.
 - prperties: the prperties in [HTMLScriptElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement).
+	- Specifically, setting `{lazyLoad : true}` will append the `script` tag to `<body>` instead of `<head>`.
 - callback: function without paraleters, called when the script is loaded.
 
 This function return a jQuery.Deferred() object.
@@ -46,7 +47,7 @@ This function return a jQuery.Deferred() object.
 		<script src="../jquery.loadscript.js"></script>
 		<script>
 			;(function($){
-				$.loadScript('test.js', {'charset' : 'UTF-8'}).done(function(){
+				$.loadScript('test.js', {'charset' : 'UTF-8', 'lazyLoad': true}).done(function(){
 					$('#test').test();
 				});
 			})(jQuery);
@@ -94,7 +95,7 @@ This function return a jQuery.Deferred() object.
 		<script src="../jquery.loadscript.js"></script>
 		<script>
 			;(function($){
-				$.when( $.loadScript('test.js', {'charset' : 'UTF-8'}), $.loadScript('test2.js')).done(function(){
+				$.when( $.loadScript('test.js', {'charset' : 'UTF-8'}), $.loadScript('test2.js', {'lazyLoad': true})).done(function(){
 					$('#test').test();
 					$('#test2').test2();
 				});

@@ -7,7 +7,7 @@
 		<script src="../jquery.loadscript.js"></script>
 		<script>
 			;(function($){
-				$.loadScript('test.js', {'charset' : 'UTF-8'}).done(function(){
+				$.loadScript('test.js', {'charset' : 'UTF-8', 'lazyLoad': true}).done(function(){
 					$('#test').test();
 				});
 			})(jQuery);

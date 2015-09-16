@@ -44,7 +44,7 @@
     }
 
 		script.src = url;
-		document.getElementsByTagName("head")[0].appendChild(script);
+		document.getElementsByTagName(params['lazyLoad'] ? 'body' : 'head')[0].appendChild(script);
 	};
 
 	$.loadScript = function( p_url, p_params, p_callback ){
