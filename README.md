@@ -10,25 +10,28 @@ With Firebug for exemple...
 
 ##Author
 Marc Buils (marc.buils@marcbuils.fr)
+Lei Ming (poetcoders@gmail.com)
 
 ##License
 LGPL v3 (http://www.gnu.org/licenses/lgpl-3.0.txt)
 
 ##Current version
-v0.1.0: 
- * Initial import
+v0.1.1: 
+ * add `params` parameter
 
 ##Usation
 For default use, load only jQuery.pluginautoload script:
 ```
-$.loadScript( url [, callback()] )  
+$.loadScript( url [, prperties] [, callback()] )  
 ```
 or
 ```
-$.loadScript( url ).done( callback() );  
+$.loadScript( url [, prperties] ).done( callback() );  
 ```
-url: URL of the script to Load
-callback: function without paraleters, called when the script is loaded.
+
+- url: URL of the script to Load.
+- prperties: the prperties in [HTMLScriptElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement).
+- callback: function without paraleters, called when the script is loaded.
 
 This function return a jQuery.Deferred() object.
 
@@ -43,7 +46,7 @@ This function return a jQuery.Deferred() object.
 		<script src="../jquery.loadscript.js"></script>
 		<script>
 			;(function($){
-				$.loadScript('test.js').done(function(){
+				$.loadScript('test.js', {'charset' : 'UTF-8'}).done(function(){
 					$('#test').test();
 				});
 			})(jQuery);
@@ -56,7 +59,8 @@ This function return a jQuery.Deferred() object.
 ```
 
 ###Example 2: Example with callback
-```
+
+```html
 <!doctype html>
 <html>
 	<head>
@@ -66,7 +70,7 @@ This function return a jQuery.Deferred() object.
 		<script src="../jquery.loadscript.js"></script>
 		<script>
 			;(function($){
-				$.loadScript('test.js', function(){
+				$.loadScript('test.js', {'charset' : 'UTF-8'}, function(){
 					$('#test').test();
 				});
 			})(jQuery);
@@ -79,7 +83,8 @@ This function return a jQuery.Deferred() object.
 ```
 
 ###Example 3: Example of multiple script loading
-```
+
+```html
 <!doctype html>
 <html>
 	<head>
@@ -89,7 +94,7 @@ This function return a jQuery.Deferred() object.
 		<script src="../jquery.loadscript.js"></script>
 		<script>
 			;(function($){
-				$.when( $.loadScript('test.js'), $.loadScript('test2.js') ).done(function(){
+				$.when( $.loadScript('test.js', {'charset' : 'UTF-8'}), $.loadScript('test2.js')).done(function(){
 					$('#test').test();
 					$('#test2').test2();
 				});
