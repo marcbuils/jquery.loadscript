@@ -52,7 +52,7 @@
 		// Handle p_params is exist
 		if (arguments.length === 2 && typeof arguments[1] === 'function') {
 			p_callback = arguments[1];
-			p_params = null;
+			p_params = {};
 		}
 
 		var _return = $.Deferred();
