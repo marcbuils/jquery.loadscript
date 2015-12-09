@@ -37,49 +37,49 @@ $.loadScript( url [, prperties] ).done( callback() );
 This function return a jQuery.Deferred() object.
 
 ###Example 1: Example with Deferred (recommended)
-```
+```html
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf8" />
-		<title>Exemple of jQuery.loadScript with deferred</title>
-		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-		<script src="../jquery.loadscript.js"></script>
-		<script>
-			;(function($){
-				$.loadScript('test.js', {'charset' : 'UTF-8', 'lazyLoad': true}).done(function(){
-					$('#test').test();
-				});
-			})(jQuery);
-		</script>
-	</head>
-	<body>
-		<div id="test"></div>
-	</body>
-</html> 
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Exemple of jQuery.loadScript with deferred</title>
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="../jquery.loadscript.js"></script>
+  <script>
+    $(function () {
+      $.loadScript('test.js', {'charset': 'UTF-8', 'lazyLoad': true}).done(function () {
+        $('#test').test();
+      });
+    })
+  </script>
+</head>
+<body>
+<div id="test"></div>
+</body>
+</html>
 ```
 
 ###Example 2: Example with callback
 
 ```html
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf8" />
-		<title>Exemple of loadScript with callback</title>
-		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-		<script src="../jquery.loadscript.js"></script>
-		<script>
-			;(function($){
-				$.loadScript('test.js', {'charset' : 'UTF-8'}, function(){
-					$('#test').test();
-				});
-			})(jQuery);
-		</script>
-	</head>
-	<body>
-		<div id="test">clique ici</div>
-	</body>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Exemple of loadScript with callback</title>
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="../jquery.loadscript.js"></script>
+  <script>
+    $(function () {
+      $.loadScript('test.js', {'charset': 'UTF-8'}, function () {
+        $('#test').test();
+      });
+    });
+  </script>
+</head>
+<body>
+<div id="test">clique ici</div>
+</body>
 </html>
 ```
 
@@ -87,24 +87,53 @@ This function return a jQuery.Deferred() object.
 
 ```html
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf8" />
-		<title>Exemple of multiple script loading</title>
-		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-		<script src="../jquery.loadscript.js"></script>
-		<script>
-			;(function($){
-				$.when( $.loadScript('test.js', {'charset' : 'UTF-8'}), $.loadScript('test2.js', {'lazyLoad': true})).done(function(){
-					$('#test').test();
-					$('#test2').test2();
-				});
-			})(jQuery);
-		</script>
-	</head>
-	<body>
-		<div id="test">clique ici</div>
-		<div id="test2">clique ici</div>
-	</body>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Exemple of multiple script loading</title>
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="../jquery.loadscript.js"></script>
+  <script>
+    $(function () {
+      $.when($.loadScript('test.js'),
+        $.loadScript('test2.js', {'charset': 'UTF-8', 'lazyLoad': true})).done(function () {
+        $('#test').test();
+        $('#test2').test2();
+      });
+    });
+  </script>
+</head>
+<body>
+<div id="test">clique ici</div>
+<div id="test2">clique ici</div>
+</body>
+</html>
+```
+
+###Example 4: Exemple of jQuery.loadScript with onerror
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Exemple of jQuery.loadScript with onerror</title>
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="../jquery.loadscript.js"></script>
+  <script>
+    $(function () {
+      $.loadScript('http://not.exist/test3.js', {
+        'charset': 'UTF-8', 'lazyLoad': true, 'onerror': function (oError) {
+          $("#test").html('error: ' + oError.isTrusted)
+        }
+      }).done(function () {
+        $('#test').test();
+      });
+    })
+  </script>
+</head>
+<body>
+<div id="test"></div>
+</body>
 </html>
 ```

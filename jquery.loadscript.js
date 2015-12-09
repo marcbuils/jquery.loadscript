@@ -9,30 +9,35 @@
  *
  * v0.1.1 - 09/16/2015:
  * First release
+ *
+ * v0.1.2 - 12/09/2015;
+ * Fix lazyLoad bug
  */
-;(function($){
-	// lazyload script
-	// ref: http://www.nczonline.net/blog/2009/07/28/the-best-way-to-load-external-javascript/
-	var _loadScript = function(url, params, callback){
 
-		var script = document.createElement("script");
-		script.type = "text/javascript";
+$(function () {
+  // lazyload script
+  // ref: http://www.nczonline.net/blog/2009/07/28/the-best-way-to-load-external-javascript/
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement
+  var _loadScript = function (url, params, callback) {
 
-		if (script.readyState){ //IE
-			script.onreadystatechange = function(){
-			if ( script.readyState == "loaded" || script.readyState == "complete"){
-				script.onreadystatechange = null;
-				callback();
-			}
-		};
-		} else { //Others
-			script.onload = function(){
-				callback();
-			};
-		}
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function () {
+        if (script.readyState == "loaded" || script.readyState == "complete") {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function () {
+        callback();
+      };
+    }
 
     var scriptsProperties = [
-      'type', 'src', 'htmlFor', 'event', 'charset', 'async', 'defer', 'crossOrigin', 'text'
+      'type', 'src', 'htmlFor', 'event', 'charset', 'async', 'defer', 'crossOrigin', 'text', 'onerror'
     ];
 
     if (typeof params === 'object' && !$.isEmptyObject(params)) {
@@ -43,32 +48,34 @@
       }
     }
 
-		script.src = url;
-		document.getElementsByTagName(params['lazyLoad'] ? 'body' : 'head')[0].appendChild(script);
-	};
+    document.getElementsByTagName(params['lazyLoad'] ? 'body' : 'head')[0].appendChild(script);
+    script.src = url;
+  };
 
-	$.loadScript = function( p_url, p_params, p_callback ){
+  $.loadScript = function (p_url, p_params, p_callback) {
 
-		// Handle p_params is exist
-		if (arguments.length === 2 && typeof arguments[1] === 'function') {
-			p_callback = arguments[1];
-			p_params = {};
-		}
+    // Handle p_params is exist
+    if (arguments.length === 2 && typeof arguments[1] === 'function') {
+      p_callback = arguments[1];
+      p_params = {}
+    }
 
-		var _return = $.Deferred();
+    p_params = p_params || {};
 
-		// Call callback if necessary
-		if ( typeof( p_callback ) === 'function' ) {
-			_return.done(function(){
-				p_callback();
-			});
-		}
+    var _return = $.Deferred();
 
-		// Load javascript file
-		_loadScript( p_url, p_params, function(){
-			_return.resolve();
-		} );
+    // Call callback if necessary
+    if (typeof( p_callback ) === 'function') {
+      _return.done(function () {
+        p_callback();
+      });
+    }
 
-		return _return.promise();
-	};
-})(jQuery);
+    // Load javascript file
+    _loadScript(p_url, p_params, function () {
+      _return.resolve();
+    });
+
+    return _return.promise();
+  };
+})

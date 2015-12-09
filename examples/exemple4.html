@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Exemple of jQuery.loadScript with deferred</title>
+  <title>Exemple of jQuery.loadScript with onerror</title>
   <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <script src="../jquery.loadscript.js"></script>
   <script>
     $(function () {
-      $.loadScript('test.js', {'charset': 'UTF-8', 'lazyLoad': true}).done(function () {
+      $.loadScript('http://not.exist/test3.js', {
+        'charset': 'UTF-8', 'lazyLoad': true, 'onerror': function (oError) {
+          $("#test").html('error: ' + oError.isTrusted)
+        }
+      }).done(function () {
         $('#test').test();
       });
     })
