@@ -4,13 +4,13 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>jQuery.loadScript by marcbuils</title>
+    <title>jQuery.loadScript by leiming</title>
   </head>
 
   <body>
@@ -23,17 +23,19 @@
         </header>
 
         <section id="downloads" class="clearfix">
-          <a href="https://github.com/marcbuils/jquery.loadscript/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/marcbuils/jquery.loadscript/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/marcbuils/jquery.loadscript" id="view-on-github" class="button"><span>View on GitHub</span></a>
+          <a href="https://github.com/leiming/jquery.loadscript/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/leiming/jquery.loadscript/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/leiming/jquery.loadscript" id="view-on-github" class="button"><span>View on GitHub</span></a>
         </section>
 
         <hr>
 
         <section id="main_content">
-          <h1>jQuery.loadscript</h1>
+          <h1>
+<a id="jqueryloadscript" class="anchor" href="#jqueryloadscript" aria-hidden="true"><span class="octicon octicon-link"></span></a>jQuery.loadscript</h1>
 
-<h2>Load debuggable Javascript scripts</h2>
+<h2>
+<a id="load-debuggable-javascript-scripts" class="anchor" href="#load-debuggable-javascript-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load debuggable Javascript scripts</h2>
 
 <p>Load a JavaScript file from the server using a GET HTTP request, then execute it. 
 This function looklike jQuery.getScript() but it use LazyLoad system. So you can debug the loaded file with a Javascript debugger. 
@@ -41,112 +43,155 @@ With Firebug for exemple...</p>
 
 <p>[Une documentation en francais est disponibles ici: <a href="http://marcbuils.developpez.com/cours/javascript/chargez-en-ajax-des-scripts-deboguables/">http://marcbuils.developpez.com/cours/javascript/chargez-en-ajax-des-scripts-deboguables/</a>]</p>
 
-<h2>Author</h2>
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
 
-<p>Marc Buils (<a href="mailto:marc.buils@marcbuils.fr">marc.buils@marcbuils.fr</a>)</p>
+<p>Marc Buils (<a href="mailto:marc.buils@marcbuils.fr">marc.buils@marcbuils.fr</a>)
+Lei Ming (<a href="mailto:poetcoders@gmail.com">poetcoders@gmail.com</a>)</p>
 
-<h2>License</h2>
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>LGPL v3 (<a href="http://www.gnu.org/licenses/lgpl-3.0.txt">http://www.gnu.org/licenses/lgpl-3.0.txt</a>)</p>
 
-<h2>Current version</h2>
+<h2>
+<a id="current-version" class="anchor" href="#current-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current version</h2>
 
-<p>v0.1.0: </p>
+<p>v0.1.1: </p>
 
 <ul>
-<li>Initial import</li>
-</ul><h2>Usation</h2>
+<li>add <code>params</code> parameter</li>
+</ul>
+
+<h2>
+<a id="usation" class="anchor" href="#usation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usation</h2>
 
 <p>For default use, load only jQuery.pluginautoload script:</p>
 
-<pre><code>$.loadScript( url [, callback()] )  
+<pre><code>$.loadScript( url [, prperties] [, callback()] )  
 </code></pre>
 
 <p>or</p>
 
-<pre><code>$.loadScript( url ).done( callback() );  
+<pre><code>$.loadScript( url [, prperties] ).done( callback() );  
 </code></pre>
 
-<p>url: URL of the script to Load
-callback: function without paraleters, called when the script is loaded.</p>
+<ul>
+<li>url: URL of the script to Load.</li>
+<li>prperties: the prperties in <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement">HTMLScriptElement</a>.
+
+<ul>
+<li>Specifically, setting <code>{lazyLoad : true}</code> will append the <code>script</code> tag to <code>&lt;body&gt;</code> instead of <code>&lt;head&gt;</code>.</li>
+</ul>
+</li>
+<li>callback: function without paraleters, called when the script is loaded.</li>
+</ul>
 
 <p>This function return a jQuery.Deferred() object.</p>
 
-<h3>Example 1: Example with Deferred (recommended)</h3>
+<h3>
+<a id="example-1-example-with-deferred-recommended" class="anchor" href="#example-1-example-with-deferred-recommended" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 1: Example with Deferred (recommended)</h3>
 
-<pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset="utf8" /&gt;
-        &lt;title&gt;Exemple of jQuery.loadScript with deferred&lt;/title&gt;
-        &lt;script src="http://code.jquery.com/jquery-1.8.2.min.js"&gt;&lt;/script&gt;
-        &lt;script src="../jquery.loadscript.js"&gt;&lt;/script&gt;
-        &lt;script&gt;
-            ;(function($){
-                $.loadScript('test.js').done(function(){
-                    $('#test').test();
-                });
-            })(jQuery);
-        &lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div id="test"&gt;&lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt; 
-</code></pre>
+<div class="highlight highlight-text-html-basic"><pre>&lt;!doctype html&gt;
+&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+  &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">title</span>&gt;Exemple of jQuery.loadScript with deferred&lt;/<span class="pl-ent">title</span>&gt;
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>http://code.jquery.com/jquery-1.8.2.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../jquery.loadscript.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-en">$</span>(<span class="pl-k">function</span> () {</span>
+<span class="pl-s1">      <span class="pl-smi">$</span>.<span class="pl-en">loadScript</span>(<span class="pl-s"><span class="pl-pds">'</span>test.js<span class="pl-pds">'</span></span>, {<span class="pl-s"><span class="pl-pds">'</span>charset<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>UTF-8<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>lazyLoad<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>}).<span class="pl-en">done</span>(<span class="pl-k">function</span> () {</span>
+<span class="pl-s1">        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#test<span class="pl-pds">'</span></span>).<span class="pl-c1">test</span>();</span>
+<span class="pl-s1">      });</span>
+<span class="pl-s1">    })</span>
+<span class="pl-s1">  &lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>test<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
 
-<h3>Example 2: Example with callback</h3>
+<h3>
+<a id="example-2-example-with-callback" class="anchor" href="#example-2-example-with-callback" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 2: Example with callback</h3>
 
-<pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset="utf8" /&gt;
-        &lt;title&gt;Exemple of loadScript with callback&lt;/title&gt;
-        &lt;script src="http://code.jquery.com/jquery-1.8.2.min.js"&gt;&lt;/script&gt;
-        &lt;script src="../jquery.loadscript.js"&gt;&lt;/script&gt;
-        &lt;script&gt;
-            ;(function($){
-                $.loadScript('test.js', function(){
-                    $('#test').test();
-                });
-            })(jQuery);
-        &lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div id="test"&gt;clique ici&lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<div class="highlight highlight-text-html-basic"><pre>&lt;!doctype html&gt;
+&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+  &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">title</span>&gt;Exemple of loadScript with callback&lt;/<span class="pl-ent">title</span>&gt;
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>http://code.jquery.com/jquery-1.8.2.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../jquery.loadscript.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-en">$</span>(<span class="pl-k">function</span> () {</span>
+<span class="pl-s1">      <span class="pl-smi">$</span>.<span class="pl-en">loadScript</span>(<span class="pl-s"><span class="pl-pds">'</span>test.js<span class="pl-pds">'</span></span>, {<span class="pl-s"><span class="pl-pds">'</span>charset<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>UTF-8<span class="pl-pds">'</span></span>}, <span class="pl-k">function</span> () {</span>
+<span class="pl-s1">        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#test<span class="pl-pds">'</span></span>).<span class="pl-c1">test</span>();</span>
+<span class="pl-s1">      });</span>
+<span class="pl-s1">    });</span>
+<span class="pl-s1">  &lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>test<span class="pl-pds">"</span></span>&gt;clique ici&lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
 
-<h3>Example 3: Example of multiple script loading</h3>
+<h3>
+<a id="example-3-example-of-multiple-script-loading" class="anchor" href="#example-3-example-of-multiple-script-loading" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 3: Example of multiple script loading</h3>
 
-<pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset="utf8" /&gt;
-        &lt;title&gt;Exemple of multiple script loading&lt;/title&gt;
-        &lt;script src="http://code.jquery.com/jquery-1.8.2.min.js"&gt;&lt;/script&gt;
-        &lt;script src="../jquery.loadscript.js"&gt;&lt;/script&gt;
-        &lt;script&gt;
-            ;(function($){
-                $.when( $.loadScript('test.js'), $.loadScript('test2.js') ).done(function(){
-                    $('#test').test();
-                    $('#test2').test2();
-                });
-            })(jQuery);
-        &lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div id="test"&gt;clique ici&lt;/div&gt;
-        &lt;div id="test2"&gt;clique ici&lt;/div&gt;
-    &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<div class="highlight highlight-text-html-basic"><pre>&lt;!doctype html&gt;
+&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+  &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">title</span>&gt;Exemple of multiple script loading&lt;/<span class="pl-ent">title</span>&gt;
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>http://code.jquery.com/jquery-1.8.2.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../jquery.loadscript.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-en">$</span>(<span class="pl-k">function</span> () {</span>
+<span class="pl-s1">      <span class="pl-smi">$</span>.<span class="pl-en">when</span>(<span class="pl-smi">$</span>.<span class="pl-en">loadScript</span>(<span class="pl-s"><span class="pl-pds">'</span>test.js<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">        <span class="pl-smi">$</span>.<span class="pl-en">loadScript</span>(<span class="pl-s"><span class="pl-pds">'</span>test2.js<span class="pl-pds">'</span></span>, {<span class="pl-s"><span class="pl-pds">'</span>charset<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>UTF-8<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>lazyLoad<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>})).<span class="pl-en">done</span>(<span class="pl-k">function</span> () {</span>
+<span class="pl-s1">        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#test<span class="pl-pds">'</span></span>).<span class="pl-c1">test</span>();</span>
+<span class="pl-s1">        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#test2<span class="pl-pds">'</span></span>).<span class="pl-en">test2</span>();</span>
+<span class="pl-s1">      });</span>
+<span class="pl-s1">    });</span>
+<span class="pl-s1">  &lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>test<span class="pl-pds">"</span></span>&gt;clique ici&lt;/<span class="pl-ent">div</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>test2<span class="pl-pds">"</span></span>&gt;clique ici&lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<h3>
+<a id="example-4-exemple-of-jqueryloadscript-with-onerror" class="anchor" href="#example-4-exemple-of-jqueryloadscript-with-onerror" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example 4: Exemple of jQuery.loadScript with onerror</h3>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;!doctype html&gt;
+&lt;<span class="pl-ent">html</span> <span class="pl-e">lang</span>=<span class="pl-s"><span class="pl-pds">"</span>en<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">head</span>&gt;
+  &lt;<span class="pl-ent">meta</span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">title</span>&gt;Exemple of jQuery.loadScript with onerror&lt;/<span class="pl-ent">title</span>&gt;
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>http://code.jquery.com/jquery-1.8.2.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>../jquery.loadscript.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-s1">    <span class="pl-en">$</span>(<span class="pl-k">function</span> () {</span>
+<span class="pl-s1">      <span class="pl-smi">$</span>.<span class="pl-en">loadScript</span>(<span class="pl-s"><span class="pl-pds">'</span>http://not.exist/test3.js<span class="pl-pds">'</span></span>, {</span>
+<span class="pl-s1">        <span class="pl-s"><span class="pl-pds">'</span>charset<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>UTF-8<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>lazyLoad<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-en">onerror</span><span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-k">function</span> (<span class="pl-smi">oError</span>) {</span>
+<span class="pl-s1">          <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#test<span class="pl-pds">"</span></span>).<span class="pl-en">html</span>(<span class="pl-s"><span class="pl-pds">'</span>error: <span class="pl-pds">'</span></span> <span class="pl-k">+</span> <span class="pl-smi">oError</span>.<span class="pl-smi">isTrusted</span>)</span>
+<span class="pl-s1">        }</span>
+<span class="pl-s1">      }).<span class="pl-en">done</span>(<span class="pl-k">function</span> () {</span>
+<span class="pl-s1">        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">'</span>#test<span class="pl-pds">'</span></span>).<span class="pl-c1">test</span>();</span>
+<span class="pl-s1">      });</span>
+<span class="pl-s1">    })</span>
+<span class="pl-s1">  &lt;/<span class="pl-ent">script</span>&gt;</span>
+&lt;/<span class="pl-ent">head</span>&gt;
+&lt;<span class="pl-ent">body</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>test<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">div</span>&gt;
+&lt;/<span class="pl-ent">body</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
         </section>
 
         <footer>
-          jQuery.loadScript is maintained by <a href="https://github.com/marcbuils">marcbuils</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+          jQuery.loadScript is maintained by <a href="https://github.com/leiming">leiming</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
         </footer>
 
                   <script type="text/javascript">
