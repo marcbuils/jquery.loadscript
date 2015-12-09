@@ -17,6 +17,7 @@
 $(function () {
   // lazyload script
   // ref: http://www.nczonline.net/blog/2009/07/28/the-best-way-to-load-external-javascript/
+  // https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement
   var _loadScript = function (url, params, callback) {
 
     var script = document.createElement("script");
@@ -36,7 +37,7 @@ $(function () {
     }
 
     var scriptsProperties = [
-      'type', 'src', 'htmlFor', 'event', 'charset', 'async', 'defer', 'crossOrigin', 'text'
+      'type', 'src', 'htmlFor', 'event', 'charset', 'async', 'defer', 'crossOrigin', 'text', 'onerror'
     ];
 
     if (typeof params === 'object' && !$.isEmptyObject(params)) {
@@ -47,8 +48,8 @@ $(function () {
       }
     }
 
-    script.src = url;
     document.getElementsByTagName(params['lazyLoad'] ? 'body' : 'head')[0].appendChild(script);
+    script.src = url;
   };
 
   $.loadScript = function (p_url, p_params, p_callback) {

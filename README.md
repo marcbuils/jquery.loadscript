@@ -86,8 +86,8 @@ This function return a jQuery.Deferred() object.
 ###Example 3: Example of multiple script loading
 
 ```html
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8"/>
   <title>Exemple of multiple script loading</title>
@@ -106,6 +106,34 @@ This function return a jQuery.Deferred() object.
 <body>
 <div id="test">clique ici</div>
 <div id="test2">clique ici</div>
+</body>
+</html>
+```
+
+###Example 4: Exemple of jQuery.loadScript with onerror
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Exemple of jQuery.loadScript with onerror</title>
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="../jquery.loadscript.js"></script>
+  <script>
+    $(function () {
+      $.loadScript('http://not.exist/test3.js', {
+        'charset': 'UTF-8', 'lazyLoad': true, 'onerror': function (oError) {
+          $("#test").html('error: ' + oError.isTrusted)
+        }
+      }).done(function () {
+        $('#test').test();
+      });
+    })
+  </script>
+</head>
+<body>
+<div id="test"></div>
 </body>
 </html>
 ```
