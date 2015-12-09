@@ -37,7 +37,7 @@ $.loadScript( url [, prperties] ).done( callback() );
 This function return a jQuery.Deferred() object.
 
 ###Example 1: Example with Deferred (recommended)
-```
+```html
 <!doctype html>
 <html lang="en">
 <head>
